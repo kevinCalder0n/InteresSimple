@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calculadora CAUE - Proyectos</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- MathJax para fórmulas -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+  <!-- Chart.js para gráficos -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Calculadora CAUE</h1>
+
+    <div id="formula">
+      $$ CAUE = P \cdot \frac{i(1+i)^n}{(1+i)^n - 1} - S \cdot \frac{i}{(1+i)^n - 1} $$
+    </div>
+
+    <button id="add-project-btn" aria-label="Agregar nuevo proyecto">➕ Agregar proyecto</button>
+
+    <div id="projects-container"></div>
+
+    <button id="calculate-btn">Calcular CAUE</button>
+
+    <div id="results" style="display:none"></div>
+
+    <canvas id="chart" style="display:none; max-width: 100%;"></canvas>
+  </div>
+
+  <!-- Script JS -->
+  <script src="script.js"></script>
+</body>
+</html>
