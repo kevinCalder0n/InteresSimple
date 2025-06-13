@@ -7,6 +7,9 @@
 
   <!-- Estilos -->
   <link rel="stylesheet" href="styles.css" />
+  
+  <!-- Font Awesome para iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
   <!-- MathJax para fórmulas -->
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
@@ -16,21 +19,50 @@
 </head>
 <body>
   <div class="container">
-    <h1>Calculadora CAUE</h1>
+    <header>
+      <h1><i class="fas fa-calculator"></i> Calculadora CAUE</h1>
+      <p class="subtitle">Costo Anual Uniforme Equivalente</p>
+    </header>
 
-    <div id="formula">
-      $$ CAUE = P \cdot \frac{i(1+i)^n}{(1+i)^n - 1} - S \cdot \frac{i}{(1+i)^n - 1} $$
+    <div class="formula-container">
+      <h2>Fórmula CAUE</h2>
+      <div id="formula">
+        $$ CAUE = P \cdot \frac{i(1+i)^n}{(1+i)^n - 1} - S \cdot \frac{i}{(1+i)^n - 1} $$
+      </div>
+      <div class="formula-explanation">
+        <p>Donde:</p>
+        <ul>
+          <li><strong>P:</strong> Inversión inicial</li>
+          <li><strong>S:</strong> Valor de salvamento</li>
+          <li><strong>i:</strong> Tasa de interés anual (%)</li>
+          <li><strong>n:</strong> Vida útil en años</li>
+        </ul>
+      </div>
     </div>
 
-    <button id="add-project-btn" aria-label="Agregar nuevo proyecto">➕ Agregar proyecto</button>
+    <div class="actions">
+      <button id="add-project-btn" class="btn-primary">
+        <i class="fas fa-plus"></i> Agregar proyecto
+      </button>
+    </div>
 
     <div id="projects-container"></div>
 
-    <button id="calculate-btn">Calcular CAUE</button>
+    <div class="actions">
+      <button id="calculate-btn" class="btn-success">
+        <i class="fas fa-calculator"></i> Calcular CAUE
+      </button>
+    </div>
 
-    <div id="results" style="display:none"></div>
+    <div id="results" class="results-container" style="display:none">
+      <h2><i class="fas fa-chart-bar"></i> Resultados</h2>
+      <div class="results-content"></div>
+    </div>
 
-    <canvas id="chart" style="display:none; max-width: 100%;"></canvas>
+    <div class="chart-container" style="display:none">
+      <h2><i class="fas fa-chart-line"></i> Comparativa de Proyectos</h2>
+      <canvas id="chart"></canvas>
+    </div>
   </div>
 
   <!-- Script JS -->
