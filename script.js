@@ -67,37 +67,28 @@ const calculateCAUE = (p, s, i, n) => {
 // Visualización
 const showResults = (results) => {
   const resultsDiv = document.getElementById("results");
-  resultsDiv.innerHTML = "";
-  const labels = [];
-  const values = [];
-
-  results.forEach((result, index) => {
-    const r = document.createElement("p");
-    r.innerHTML = `<strong>Proyecto ${index + 1}:</strong> CAUE = ${formatCurrency(result)}`;
-    resultsDiv.appendChild(r);
-
-    labels.push(`Proyecto ${index + 1}`);
-    values.push(result);
-  });
-
-  resultsDiv.style.display = "block";
-  showChart(labels, values);
-};
-
-const showChart = (labels, values) => {
-  const canvas = document.getElementById("chart");
-  canvas.style.display = "block";
-  const ctx = canvas.getContext("2d");
+  const resultsContent = resultsDiv.querySelector(".results-content");
+  const chartContainer = document.querySelector(".chart-container");
   
+  resultsDiv.style.display = "block";
+  chartContainer.style.display = "block";
+  
+  // Mostrar resultados en texto
+  resultsContent.innerHTML = results.map((result, index) => 
+    `<p>Proyecto ${index + 1}: CAUE = ${formatCurrency(result)}</p>`
+  ).join('');
+
+  // Crear gráfico
+  const canvas = document.getElementById("chart");
   if (window.caueChart) window.caueChart.destroy();
 
-  window.caueChart = new Chart(ctx, {
+  window.caueChart = new Chart(canvas, {
     type: "bar",
     data: {
-      labels,
+      labels: results.map((_, i) => `Proyecto ${i + 1}`),
       datasets: [{
         label: "CAUE",
-        data: values,
+        data: results,
         backgroundColor: "#0077b6",
         borderColor: "#005f8a",
         borderWidth: 1
